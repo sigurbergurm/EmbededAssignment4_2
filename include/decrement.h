@@ -7,11 +7,11 @@
 
 extern pthread_mutex_t sharedVariableMutex;
 // extern int32_t gSharedVariable;
-
+extern Fifo fifo;
 
 void *decrementTask(void*param)
 {
-    extern Fifo fifo;
+    
     while(1){
     /*Delay for 7 seconds.*/
     sleep(7);

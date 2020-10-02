@@ -8,10 +8,9 @@ extern Fifo fifo;
 extern pthread_mutex_t sharedVariableMutex;
 // extern int32_t gSharedVariable;
 int counter = 1;
-
+extern Fifo fifo;
 
 void *incrementTask(void*param){
-    extern Fifo fifo;
     while(1){
         /*Delay for 3seconds.*/
         sleep(3);

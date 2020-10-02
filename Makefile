@@ -10,20 +10,20 @@
 ## mutex: 
 ## 	g++ -o mutex -pthread -I include src/mutex.cpp 
 
-output: mutex.o fifo.o decrement.h increment.h
+output: mutex.o fifo.o decrement.o increment.o
 	g++ mutex.o -o output -pthread -I include -I src
 
 mutex.o: src/mutex.cpp
 	g++ -c src/mutex.cpp
 
 fifo.o: src/fifo.cpp include/fifo.h
-	g++ -c src/fifo.cpp include/fifo.h -pthread -I src -I include 
+	g++ -c  -pthread -I src -I include src/fifo.cpp
 
-decrement.h: include/decrement.h
-	g++ -c  -l include/fifo.h -pthread -I src -I include
+decrement.o: src/decrement.cpp include/decrement.h
+	g++ -c  -l include/fifo.o -pthread -I src -I include src/decrement.cpp
 
-increment.h: include/increment.h
-	g++ -c  -l include/fifo.h -pthread -I src -I include
+increment.o: src/increment.cpp include/increment.h
+	g++ -c  -l include/fifo.o -pthread -I src -I include src/increment.cpp
 
 clean:
 	rm *.o output
