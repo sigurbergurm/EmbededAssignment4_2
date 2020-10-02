@@ -1,7 +1,6 @@
 #include <pthread.h>
 #include "../include/decrement.h"
 #include "../include/increment.h"
-#include "../include/fifo.h"
 #include <unistd.h>
 #include <sys/types.h>
 

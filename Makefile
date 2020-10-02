@@ -17,13 +17,13 @@ mutex.o: src/mutex.cpp
 	g++ -c src/mutex.cpp
 
 fifo.o: src/fifo.cpp include/fifo.h
-	g++ -c src/fifo.cpp include/fifo.h -I src -I include 
+	g++ -c src/fifo.cpp include/fifo.h -pthread -I src -I include 
 
 decrement.h: include/decrement.h
-	g++ -c  -l include/fifo.h -l src/fifo.cpp include/decrement.h
+	g++ -c  -l include/fifo.h -pthread -I src -I include
 
 increment.h: include/increment.h
-	g++ -c  -l include/fifo.h -l src/fifo.cpp include/increment.h
+	g++ -c  -l include/fifo.h -pthread -I src -I include
 
 clean:
 	rm *.o output

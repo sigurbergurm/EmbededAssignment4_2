@@ -4,23 +4,25 @@
 #include <iostream>
 #include "../include/fifo.h"
 
+
 extern pthread_mutex_t sharedVariableMutex;
-extern int32_t gSharedVariable;
-extern Fifo fifo;
+// extern int32_t gSharedVariable;
+
 
 void *decrementTask(void*param)
 {
+    extern Fifo fifo;
     while(1){
     /*Delay for 7 seconds.*/
     sleep(7);
     /*Wait for the mutex to become available.*/
     pthread_mutex_lock(&sharedVariableMutex);
-    gSharedVariable--;
+    // gSharedVariable--;
 
     fifo.get();
 
-    std::cout << "DecrementTask: shared var is ";
-    std::cout << gSharedVariable << std::endl;
+    // std::cout << "DecrementTask: shared var is ";
+    // std::cout << gSharedVariable << std::endl;
     /*Release the mutex.*/
     pthread_mutex_unlock(&sharedVariableMutex);
     }
